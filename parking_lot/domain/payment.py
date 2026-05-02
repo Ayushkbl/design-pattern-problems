@@ -19,7 +19,7 @@ class Payment:
     
     def __init__(self, ticket_id: str, amount: float, payment_gateway: PaymentGateway) -> None:
         self.id: str = str(uuid.uuid4())
-        self.ticket_id: uuid.UUID = ticket_id
+        self.ticket_id: str = ticket_id
         self.amount: float = amount
         self.gateway: Payment.PaymentGateway = payment_gateway
         self.status: Payment.PaymentStatus = Payment.PaymentStatus.PENDING
