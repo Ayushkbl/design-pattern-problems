@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from movie_ticket.location.seat import Seat
 
@@ -22,16 +22,14 @@ class Layout:
         self.__seats_by_number[seat_number] = seat
         self.__seats_by_position[row][column] = seat
 
-    @property
-    def seats_by_number(self) -> Dict[str, Seat]:
-        return self.__seats_by_number
+    def get_seats_by_number(self, seat_number: str) -> Optional[Seat]:
+        return self.__seats_by_number.get(seat_number)
 
-    @property
-    def seats_by_position(self) -> Dict[int, Dict[int, Seat]]:
-        return self.__seats_by_position
+    def get_seats_by_position(self, row: int, column: int) -> Optional[Seat]:
+        row_seats = self.__seats_by_position.get(row)
+        return row_seats.get(column) if row_seats else None
     
-    @property
-    def all_seats(self) -> List[Seat]:
+    def get_all_seats(self) -> List[Seat]:
         return list(self.__seats_by_number.values())
     
     

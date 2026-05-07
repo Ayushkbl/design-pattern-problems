@@ -1,5 +1,6 @@
 from typing import Optional
 
+from movie_ticket.rate.normal_rate import NormalRate
 from movie_ticket.rate.pricing_strategy import PricingStrategy
 
 class Seat:
